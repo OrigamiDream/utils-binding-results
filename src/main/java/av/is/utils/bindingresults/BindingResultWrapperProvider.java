@@ -1,8 +1,10 @@
 package av.is.utils.bindingresults;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class BindingResultWrapperProvider implements BindingResultProvider {
 
@@ -46,5 +48,10 @@ public class BindingResultWrapperProvider implements BindingResultProvider {
     @Override
     public boolean hasError(BindingResult bindingResult, String field) {
         return bindingResultProvider.hasError(bindingResult, field);
+    }
+
+    @Override
+    public List<ObjectError> getErrorsByField(BindingResult bindingResult, String field) {
+        return bindingResultProvider.getErrorsByField(bindingResult, field);
     }
 }

@@ -1,8 +1,11 @@
 package av.is.utils.bindingresults;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 public interface IBindingResult {
 
@@ -27,5 +30,17 @@ public interface IBindingResult {
      * Checks which error has defined in BindingResult by error field.
      */
     boolean hasError(BindingResult bindingResult, String field);
+
+    /**
+     * Get all errors which its field name equals to 'field'.
+     */
+    List<ObjectError> getErrorsByField(BindingResult bindingResult, String field);
+
+    /**
+     * Provides stream wrapper of method: getErrorsByField()
+     */
+    default Stream<ObjectError> errorsByField(BindingResult bindingResult, String field) {
+        return getErrorsByField(bindingResult, field).stream();
+    }
 
 }

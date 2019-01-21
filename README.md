@@ -43,4 +43,14 @@ void clearError(BindingResult bindingResult);
  * Checks which error has defined in BindingResult by error field.
  */
 boolean hasError(BindingResult bindingResult, String field);
+
+/**
+ * Get all errors which its field name equals to 'field'.
+ */
+List<ObjectError> getErrorsByField(BindingResult bindingResult, String field);
+
+/**
+ * Provides stream wrapper of method: getErrorsByField()
+ */
+Stream<ObjectError> errorsByField(BindingResult bindingResult, String field);
 ```
